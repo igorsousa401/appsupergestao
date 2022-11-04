@@ -21,7 +21,7 @@ Route::get('/', [PrincipalController::class, 'index'])->name('site.index');
 Route::get('/sobrenos', [SobreController::class, 'index'])->name('site.sobrenos');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
 Route::get('/login', function() {return "Login";})->name('login.index');
-Route::post('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+Route::post('/contato', [ContatoController::class, 'save'])->name('site.contato');
 
 
 Route::prefix('/app')->group(function(){
