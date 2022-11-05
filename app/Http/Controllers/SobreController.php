@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Http\Request;
 
 class SobreController extends Controller
