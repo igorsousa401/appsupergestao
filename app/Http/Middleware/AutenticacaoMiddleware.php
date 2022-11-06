@@ -16,28 +16,13 @@ class AutenticacaoMiddleware
      */
     public function handle(Request $request, Closure $next, $metodo_autenticacao, $perfil)
     {
-        // Verificando acesso a rota
-        echo $metodo_autenticacao."-".$perfil."<br>";
-
-
-        if($metodo_autenticacao == 'padrao'){
-            echo "Verificar login e senha no banco de dados!<br>";
-        }
-        if($metodo_autenticacao == 'ldap'){
-            echo "Verificar dados da autenticacao!<br>";
-        }
-
-        if($perfil == 'visitante'){
-            echo "Acesso Restrito a usuários cadastrados!<br>";
-        }
-        if($perfil == 'usuario'){
-            echo "Acesso autorizado!<br>";
-        }
         
-        if(false) {
+        session_start();
+
+        if(isset($_SESSION['email']) && $_SESSION['email'] != '') {
             return $next($request);
-        } else {
-            return response('Acesso Negado! Realize a autenticação.');
+        } else{
+            return redirect()->route('site.login', ['erro' => 2]);
         }
         
     }

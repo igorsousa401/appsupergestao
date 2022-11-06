@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreController;
 use Illuminate\Support\Facades\Route;
@@ -20,8 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PrincipalController::class, 'index'])->name('site.index');
 Route::get('/sobrenos', [SobreController::class, 'index'])->name('site.sobrenos');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
-Route::get('/login', function() {return "Login";})->name('login.index');
 Route::post('/contato', [ContatoController::class, 'save'])->name('site.contato');
+
+Route::get('/login/{erro??}', [LoginController::class, 'index'])->name('site.login');
+Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
 
 
 Route::middleware('autenticacao:padrao,perfil')->prefix('/app')->group(function(){
