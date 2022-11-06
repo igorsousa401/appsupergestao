@@ -18,7 +18,7 @@ class ContatoController extends Controller
         $regras = [
             'nome' => 'required|min:5|max:40',
             'telefone' => 'required',
-            'email' => 'required|email|unique:site_contatos',
+            'email' => 'required|email',
             'motivo_contatos_id' => 'required',
             'mensagem' => 'required|max:2000',
 
